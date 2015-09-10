@@ -14,3 +14,16 @@
 $app->get('/', function () use ($app) {
     return $app->welcome();
 });
+
+$app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function($app)
+{
+    $app->get('login','LoginController@index');
+  
+    $app->get('login/{id}','LoginController@getLogin');
+      
+    $app->post('login','LoginController@createLogin');
+      
+    $app->put('login/{id}','LoginController@updateLogin');
+      
+    $app->delete('login/{id}','LoginController@deleteLogin');
+});
