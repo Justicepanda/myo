@@ -6,6 +6,7 @@ use App\Login;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
   
+header("Access-Control-Allow-Origin: *");
   
 class LoginController extends Controller
 {
@@ -51,6 +52,24 @@ class LoginController extends Controller
         $Login->save();
   
         return response()->json($Login);
+    }
+
+     public function authenticateLogin(Request $request)
+    {
+        $loginUsername = $request->input('username');
+        $loginPassword = $request->input('password');
+
+        $Login = Login::where('loginUsername', $loginUsername)->first();
+
+
+        if($Login != null)
+        {
+            $content = $Login->id;
+            return response($content);
+        }
+
+        $content = "NOTFOUND";
+        return response($content);
     }
 }
 ?>

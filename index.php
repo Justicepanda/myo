@@ -1,5 +1,9 @@
+<?php 
+ header("Access-Control-Allow-Origin: myo.local");
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="MyoSleepApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +21,7 @@
     <link href="assets/css/views/index.css" rel="stylesheet">
   </head>
 
-  <body ng-controller="DashboardController">
+  <body ng-controller="dashboardController">
     <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
 
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -45,18 +49,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a id="brand" class="navbar-brand" href="/dashboard">MyoSleep</a>
+          <a id="brand" class="navbar-brand" href="#/dashboard">MyoSleep</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li id="dashboardTab" class="active"><a href="/dashboard">Dashboard</a></li>
-            <li id="sleepdataTab"><a href="/sleepdata">Sleep Data</a></li>      
+            <li id="dashboardTab" class="active"><a href="#/dashboard">Dashboard</a></li>
+            <li id="sleepdataTab"><a href="#/sleepdata">Sleep Data</a></li>      
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="account">Account</a></li>
+                <li><a href="#/account">Account</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Log Out</a></li>
               </ul>
@@ -78,7 +82,7 @@
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/angular-route.js"></script>
     <script src="assets/js/d3.min.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="app/app.js"></script>
     <script src="assets/js/views/index.js"></script>
   </body>
 </html>

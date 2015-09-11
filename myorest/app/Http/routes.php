@@ -26,4 +26,6 @@ $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function(
     $app->put('login/{id}','LoginController@updateLogin');
       
     $app->delete('login/{id}','LoginController@deleteLogin');
+
+    $app->post('loginauth','LoginController@authenticateLogin');
 });

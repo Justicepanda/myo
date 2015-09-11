@@ -1,23 +1,41 @@
+<?php 
+ header("Access-Control-Allow-Origin: myo.local");
+?>
+
 <div class="panel panel-success">
     <div class="panel-heading">
         <h4>Account Information</h4>
     </div>
     <div class="panel-body">
-        <div class="row">
-        	<div class="col-md-6" style="margin: 20px">
-                <h4>First Name:</h4><h5>Drew</h5>
+        <div class="col-md-6">
+        	<div class="row" style="margin: 20px">
+                <div class="col-md-6"><h4>First Name:</h4></div>
+                <div class="col-md-6"><h5 id="firstname"></h5></div>
             </div>
-            <div class="col-md-6" style="margin: 20px">
-                <h4>Last Name:</h4><h5>Swinney</h5>
+            <div class="row" style="margin: 20px">
+                <div class="col-md-6"><h4>Last Name:</h4></div>
+                <div class="col-md-6"><h5 id="lastname"></h5></div>
              </div>
-            <div class="col-md-6" style="margin: 20px">
-                <h4>Username: </h4><h5>drewswinney</h5>
+            <div class="row" style="margin: 20px">
+                <div class="col-md-6"><h4>Username: </h4></div>
+                <div class="col-md-6"><h5 id="username"></h5></div>
             </div>
-            <div class="col-md-6" style="margin: 20px">
-                <h4>Password: </h4><h5>************</h5>
+            <div class="row" style="margin: 20px">
+                <div class="col-md-6"><h4>Password: </h4></div>
+                <div class="col-md-6"><h5 id="password"></h5></div>
             </div>
-            <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <div class="row" style="margin: 20px">
+                <div class="col-md-6"><h4>Email:</h4></div>
+                <div class="col-md-6"><h5 id="email"></h5></div>
             </div>
+            <div class="row" style="margin: 20px">
+                <div class="col-md-6"><h4>Account Created:</h4></div>
+                <div class="col-md-6"><h5 id="accountcreated"></h5></div>
+             </div>
         </div>
     </div>
 </div>
+
+<script src="../../../assets/js/views/account.js"></script>
