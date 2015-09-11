@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 10, 2015 at 01:53 AM
+-- Generation Time: Sep 11, 2015 at 06:46 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.5.14
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datapoints`
+-- Table structure for table `data_points`
 --
 
-CREATE TABLE IF NOT EXISTS `datapoints` (
+CREATE TABLE IF NOT EXISTS `data_points` (
   `id` int(10) unsigned NOT NULL,
   `dpXRotation` double(8,2) NOT NULL,
   `dpYRotation` double(8,2) NOT NULL,
@@ -43,7 +43,14 @@ CREATE TABLE IF NOT EXISTS `datapoints` (
   `dpDeleted` bigint(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `data_points`
+--
+
+INSERT INTO `data_points` (`id`, `dpXRotation`, `dpYRotation`, `dpZRotation`, `dpPod1`, `dpPod2`, `dpPod3`, `dpPod4`, `dpPod5`, `dpPod6`, `dpPod7`, `dpPod8`, `sessionID`, `dpDeleted`, `created_at`, `updated_at`) VALUES
+(1, 1.00, 2.00, 3.00, 1, 2, 3, 4, 5, 6, 7, 8, 1, 0, '0000-00-00 00:00:00', '2015-09-11 06:45:35');
 
 -- --------------------------------------------------------
 
@@ -61,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `loginDeleted` bigint(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `logins`
@@ -69,7 +76,9 @@ CREATE TABLE IF NOT EXISTS `logins` (
 
 INSERT INTO `logins` (`id`, `loginUsername`, `loginPassword`, `loginFirstName`, `loginLastName`, `loginEmail`, `loginDeleted`, `created_at`, `updated_at`) VALUES
 (1, 'test', 'test', 'Admin', 'test', 'test@test.test', 0, '2015-09-10 01:15:25', '2015-09-10 01:15:25'),
-(2, '', '', '', '', '', 0, '2015-09-10 01:16:03', '2015-09-10 01:16:03');
+(2, '', '', '', '', '', 0, '2015-09-10 01:16:03', '2015-09-10 01:16:03'),
+(3, '', '', '', '', '', 0, '2015-09-11 05:09:42', '2015-09-11 05:09:42'),
+(4, '', '', '', '', '', 0, '2015-09-11 05:09:56', '2015-09-11 05:09:56');
 
 -- --------------------------------------------------------
 
@@ -101,19 +110,27 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `id` int(10) unsigned NOT NULL,
   `sessionStartTime` datetime NOT NULL,
   `sessionEndTime` datetime NOT NULL,
+  `loginID` int(10) NOT NULL,
   `sessionDeleted` bigint(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `sessionStartTime`, `sessionEndTime`, `loginID`, `sessionDeleted`, `created_at`, `updated_at`) VALUES
+(1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `datapoints`
+-- Indexes for table `data_points`
 --
-ALTER TABLE `datapoints`
+ALTER TABLE `data_points`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -133,20 +150,20 @@ ALTER TABLE `sessions`
 --
 
 --
--- AUTO_INCREMENT for table `datapoints`
+-- AUTO_INCREMENT for table `data_points`
 --
-ALTER TABLE `datapoints`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+ALTER TABLE `data_points`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `logins`
 --
 ALTER TABLE `logins`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

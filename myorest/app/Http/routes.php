@@ -28,4 +28,24 @@ $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function(
     $app->delete('login/{id}','LoginController@deleteLogin');
 
     $app->post('loginauth','LoginController@authenticateLogin');
+
+    $app->get('session','SessionController@index');
+  
+    $app->get('session/{id}','SessionController@getSession');
+      
+    $app->post('session','SessionController@createSession');
+      
+    $app->put('session/{id}','SessionController@updateSession');
+      
+    $app->delete('session/{id}','SessionController@deleteSession');
+
+    $app->get('datapoint','DatapointController@index');
+  
+    $app->get('datapoint/{id}','DatapointController@getDatapoint');
+      
+    $app->post('datapoint','DatapointController@createDatapoint');
+      
+    $app->put('datapoint/{id}','DatapointController@updateDatapoint');
+      
+    $app->delete('datapoint/{id}','DatapointController@deleteDatapoint');
 });
