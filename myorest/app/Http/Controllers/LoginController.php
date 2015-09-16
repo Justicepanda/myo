@@ -42,6 +42,10 @@ class LoginController extends Controller
   
     public function updateLogin(Request $request, $id)
     {
+        // Change the line below to your timezone!
+        date_default_timezone_set('America/Atlanta');
+        $date = date('m/d/Y h:i:s a', time());
+
         $Login  = Login::find($id);
         $Login->loginUsername = $request->input('loginUsername');
         $Login->loginPassword = $request->input('loginPassword');
@@ -61,8 +65,7 @@ class LoginController extends Controller
 
         $Login = Login::where('loginUsername', $loginUsername)->first();
 
-
-        if($Login != null)
+        if($Login != null and $loginPassword == $Login->loginPassword)
         {
             $content = $Login->id;
             return response($content);

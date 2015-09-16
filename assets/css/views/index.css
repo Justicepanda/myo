@@ -94,3 +94,7 @@
 .login-help{
   font-size: 12px;
 }
+
+body {
+  background: #222;
+}

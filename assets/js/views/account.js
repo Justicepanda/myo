@@ -10,7 +10,11 @@ $(document).ready(function()
 	    $('#username').text(data.loginUsername);
 	    $('#password').text(data.loginPassword);
 	    $('#email').text(data.loginEmail);
-	    $('#accountcreated').text(data.created_at);
+
+	    var t = data.created_at.split(/[- :]/);
+		var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+	    $('#accountcreated').text(d);
 	});
 });
 

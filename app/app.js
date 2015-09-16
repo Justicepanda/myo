@@ -17,10 +17,22 @@ MyoSleepApp.config(function($routeProvider) {
         })
 
         // route for the about page
+        .when('/sleepdata', {
+            templateUrl : 'app/components/sleepdata/sleepdata.php',
+            controller  : 'sleepdataController'
+        })
+
+        // route for the about page
         .when('/account', {
             templateUrl : 'app/components/account/account.php',
             controller  : 'accountController'
         })
+});
+
+// create the controller and inject Angular's $scope
+MyoSleepApp.controller('sleepdataController', function($scope) {
+    // Use JQuery to call the RESTful API and get account information
+    
 });
 
 // create the controller and inject Angular's $scope

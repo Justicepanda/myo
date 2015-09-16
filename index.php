@@ -32,15 +32,16 @@
           <input type="password" id="passText" placeholder="Password">
           <input type="submit" id="loginSubmitBtn" class="login loginmodal-submit" value="Login">
           <div class="login-help">
-          <!-- <a href="#">Register</a> - <a href="#">Forgot Password</a> -->
+            <div id="wrongPasswordAlert" class="alert alert-danger hidden text-center" role="alert">Woops! Incorrect username or password</div>
           </div>
+          <!-- <a href="#">Register</a> - <a href="#">Forgot Password</a> -->
         </div>
       </div>
     </div>
 
 
     <!-- Navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -60,9 +61,9 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#/account">Account</a></li>
+                <li><a id="accountTab" href="#/account">Account</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Log Out</a></li>
+                <li><a id="logoutBtn">Log Out</a></li>
               </ul>
             </li>
           </ul>
@@ -71,7 +72,7 @@
     </nav>
 
     <div class="container" style="margin-top:60px;">
-      <div ng-view>
+      <div ng-view></div>
     </div>
 
     <!-- Bootstrap core JavaScript
@@ -84,6 +85,7 @@
     <script src="assets/js/d3.min.js"></script>
     <script src="app/app.js"></script>
     <script src="assets/js/views/index.js"></script>
+    <script src="assets/js/views/dashboard.js"></script>
   </body>
 </html>
 
