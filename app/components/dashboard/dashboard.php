@@ -66,6 +66,8 @@
 	</div>
 </div>
 
+<script src="../../../assets/js/views/dashboard.js"></script>
+    
 <script>
 	// simple array
 	var data = [8, 12, 15, 30, 43];

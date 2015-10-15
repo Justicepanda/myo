@@ -23,6 +23,15 @@ class SessionController extends Controller
   
         return response()->json($Session);
     }
+
+    public function getSessionsByLoginID(Request $request, $id)
+    {
+        $Sessions = Session::where('loginID', $id)
+        ->where('sessionDeleted', 0)
+        ->whereBetween('sessionStartTime', [$request->input('sessionStartTime'), $request->input('sessionEndTime')])->get();
+  
+        return response()->json($Sessions);
+    }
   
     public function createSession(Request $request)
     {
@@ -46,6 +55,7 @@ class SessionController extends Controller
         $Session->sessionStartTime = $request->input('sessionStartTime');
         $Session->sessionEndTime = $request->input('sessionEndTime');
         $Session->loginID = $request->input('loginID');
+        $Session->sessionQuality = $request->input('sessionQuality');
         $Session->sessionDeleted = 0;
         $Session->save();
   

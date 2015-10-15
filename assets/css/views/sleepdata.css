@@ -2,3 +2,73 @@
 {
 	color:#ff0000;
 }
+
+.calendarRow
+{
+	text-align:center;
+}
+
+.calendarRow li
+{
+	display: inline-block;
+	height:100px;
+	width:100px;
+	text-align: center
+}
+
+.calendarHeaderRow
+{
+	padding-top:5px;
+	text-align:center;
+}
+
+.calendarHeaderRow li
+{
+	display: inline-block;
+	width:100px;
+}
+
+.calendarDayHeader
+{
+	display: inline; 
+	color:#ffffff;
+	width:100px;
+	list-style-type: none;
+}
+
+.calendarDay
+{
+	position: relative;
+	display: inline; 
+	list-style-type: none;
+	float:left;
+	left:10px;
+	top:10px;
+	height:80px;
+	width:80px;
+	text-align: center;
+	-webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.calendarDay:hover
+{
+	position:relative;
+	height:100px;
+	width:100px;
+	left:0px;
+	top:0px;
+}
+
+.emptyDay
+{
+	position:relative;
+	display: inline; 
+	list-style-type: none;
+	float:left;
+	background:transparent; 
+	height:100px;
+	width:100px;
+}

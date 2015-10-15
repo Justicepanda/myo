@@ -16,6 +16,8 @@ class CreateSessionsTable extends Migration
             $table->increments('id');
             $table->datetime('sessionStartTime');
             $table->datetime('sessionEndTime');
+            $table->bigInteger('loginID');
+            $table->bigInteger('sessionQuality');
             $table->bigInteger('sessionDeleted');
             $table->timestamps();
         });

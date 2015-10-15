@@ -29,6 +29,8 @@ $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function(
 
     $app->post('loginauth','LoginController@authenticateLogin');
 
+
+    //Session
     $app->get('session','SessionController@index');
   
     $app->get('session/{id}','SessionController@getSession');
@@ -39,13 +41,41 @@ $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function(
       
     $app->delete('session/{id}','SessionController@deleteSession');
 
-    $app->get('datapoint','DatapointController@index');
+    $app->get('sessionsbyloginid/{id}','SessionController@getSessionsByLoginID');
+
+
+    //RotationDataPoint
+    $app->get('rotationdatapoint','RotationDatapointController@index');
   
-    $app->get('datapoint/{id}','DatapointController@getDatapoint');
+    $app->get('rotationdatapoint/{id}','RotationDatapointController@getRotationDatapoint');
       
-    $app->post('datapoint','DatapointController@createDatapoint');
+    $app->post('rotationdatapoint','RotationDatapointController@createRotationDatapoint');
       
-    $app->put('datapoint/{id}','DatapointController@updateDatapoint');
+    $app->put('rotationdatapoint/{id}','RotationDatapointController@updateRotationDatapoint');
       
-    $app->delete('datapoint/{id}','DatapointController@deleteDatapoint');
+    $app->delete('rotationdatapoint/{id}','RotationDatapointController@deleteRotationDatapoint');
+
+
+    //AccelerationDataPoint
+    $app->get('accelerationdatapoint','AccelerationDatapointController@index');
+  
+    $app->get('accelerationdatapoint/{id}','AccelerationDatapointController@getAccelerationDatapoint');
+      
+    $app->post('accelerationdatapoint','AccelerationDatapointController@createAccelerationDatapoint');
+      
+    $app->put('accelerationdatapoint/{id}','AccelerationDatapointController@updateAccelerationDatapoint');
+      
+    $app->delete('accelerationdatapoint/{id}','AccelerationDatapointController@deleteAccelerationDatapoint');
+
+
+    //EmgDataPoint
+    $app->get('emgdatapoint','EmgDatapointController@index');
+  
+    $app->get('emgdatapoint/{id}','EmgDatapointController@getEmgDatapoint');
+      
+    $app->post('emgdatapoint','EmgDatapointController@createEmgDatapoint');
+      
+    $app->put('emgdatapoint/{id}','EmgDatapointController@updateEmgDatapoint');
+      
+    $app->delete('emgdatapoint/{id}','EmgDatapointController@deleteEmgDatapoint');
 });

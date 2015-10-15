@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Myo Sleep</title>
+    <title>Lumyo</title>
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,9 +21,7 @@
     <link href="assets/css/views/index.css" rel="stylesheet">
   </head>
 
-  <body ng-controller="dashboardController">
-    <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-
+  <body>
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
       <div class="modal-dialog">
         <div class="loginmodal-container">
@@ -50,7 +48,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a id="brand" class="navbar-brand" href="#/dashboard">MyoSleep</a>
+          <a id="brand" class="navbar-brand" href="#/dashboard">Lumyo</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -71,7 +69,7 @@
       </div>
     </nav>
 
-    <div class="container" style="margin-top:60px;">
+    <div class="container" style="margin-top:40px;">
       <div ng-view></div>
     </div>
 
@@ -85,17 +83,11 @@
     <script src="assets/js/d3.min.js"></script>
     <script src="app/app.js"></script>
     <script src="assets/js/views/index.js"></script>
-    <script src="assets/js/views/dashboard.js"></script>
   </body>
 </html>
 
 <script>
-  
-$( document ).ready(function() 
-{
-    options = { backdrop:'static', keyboard: false, show: true };
+  options = { backdrop:'static', keyboard: false, show: true };
 
-    $('#login-modal').modal(options);
-});
-
+  $('#login-modal').modal(options);
 </script>

@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Session extends Model
 {
      
-     protected $fillable = ['sessionID', 'sessionStartTime', 'sessionEndTime', 'loginID', 'sessionDeleted'];
+     protected $fillable = ['sessionID', 'sessionStartTime', 'sessionEndTime', 'loginID', 'sessionQuality', 'sessionDeleted'];
      
 }
 ?>
