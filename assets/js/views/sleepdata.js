@@ -1,4 +1,12 @@
 var sessions = new Array();
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var colors = ['1B452A', '225635', '286740', '2F784A', '368A55', '3C9B5F', '43AC6A', '56B479', '69BD88', '7BC597'];
+var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+
+var date = new Date();
+var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
 
 $('#dateBtn').click(function() 
 {
@@ -45,9 +53,6 @@ $('#calendarViewBtn').click(function()
 	$('#sortLabel').addClass('hidden');
 });
 
-var date = new Date();
-var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
 var url = "http://localhost:8000/api/sessionsbyloginid/"+ getCookie('loginId') + "?sessionStartTime=" + firstDay.toISOString().slice(0, 19).replace('T', ' ') + "&sessionEndTime=" + lastDay.toISOString().slice(0, 19).replace('T', ' ');
 
 $.get(url, function(data, status)
@@ -67,9 +72,6 @@ $.get(url, function(data, status)
 		sessions[startDateTime.getDate()] = sessionData;
 	});
 
-
-	var colors = ['1B452A', '225635', '286740', '2F784A', '368A55', '3C9B5F', '43AC6A', '56B479', '69BD88', '7BC597'];
-	var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	var currentDate = 1;
 	var week = 1;
 	var lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 2, 0);
@@ -81,6 +83,7 @@ $.get(url, function(data, status)
 			if(sessions[currentDate] != undefined)
 			{
 				$('#week' + week).append('<li onclick="openSession(' + currentDate + ')"><div class="calendarDay" style="background:#' + colors[sessions[currentDate].sessionQuality - 1] + ';"><h4 style="position:relative; top:20px; color:#ffffff;">' + currentDate + '</h4></div></li>');
+				$('#sessionList').append('<li class="listitem list-group-item" onclick="openSession(' + currentDate + ')"><div class="pull-right" style="width:40px; height:40px; background:#' + colors[sessions[currentDate].sessionQuality - 1] + '"></div><h4>' + months[firstDay.getMonth()] + ' ' + currentDate + '</h4></li>');
 			}
 			else
 			{
@@ -111,8 +114,105 @@ function getCookie(cname) {
 
 function openSession(id)
 {
-	$('#modalTitle').replaceWith(sessions[id].sessionStartTime);
-	var options = { backdrop:'static', keyboard: false, show: true };
+	$('#modalTitle').replaceWith('<h4 id="modalTitle" class="modal-title">' + months[firstDay.getMonth()] + ' ' + id + '</h4>');
+	$('#startTime').replaceWith('<h5 id="startTime">' + sessions[id].sessionStartTime + '</h5>');
+	$('#endTime').replaceWith('<h5 id="endTime">' + sessions[id].sessionEndTime + '</h5>');
+	$('#quality').replaceWith('<h5 id="quality">' + sessions[id].sessionQuality + '</h5>');
+
+	updateGraph();
+
+	var options = { show: true };
 
   	$('#session-modal').modal(options);
+}
+
+function updateGraph(id)
+{
+	// svg.selectAll("*").remove();
+
+	var data = [{
+    "sale": "202",
+    "year": "2000"
+	}, {
+	    "sale": "225",
+	    "year": "2002"
+	}, {
+	    "sale": "179",
+	    "year": "2004"
+	}, {
+	    "sale": "199",
+	    "year": "2006"
+	}, {
+	    "sale": "102",
+	    "year": "2008"
+	}, {
+	    "sale": "176",
+	    "year": "2010"
+	}];
+
+	var vis = d3.select("#visualization"),
+    WIDTH = 1000,
+    HEIGHT = 500,
+    MARGINS = {
+        top: 50,
+        right: 20,
+        bottom: 50,
+        left: 100
+    },
+    
+    lSpace = WIDTH/data.length;
+
+    xScale = d3.scale.linear()
+                .range([MARGINS.left, WIDTH - MARGINS.right])
+                .domain([d3.min(data, function(d) {return d.year;}), d3.max(data, function(d) {return d.year;})]),
+                        
+    yScale = d3.scale.linear()
+                .range([HEIGHT - MARGINS.top, MARGINS.bottom])
+                .domain([0, d3.max(data, function(d) {return d.sale;})]),
+                //.domain([d3.min(data, function(d) {return d.sale;}), d3.max(data, function(d) {return d.sale;})]),
+
+    xAxis = d3.svg.axis()
+    .scale(xScale),
+
+    yAxis = d3.svg.axis()
+    .scale(yScale)
+    .orient("left");
+
+	vis.append("svg:g")
+	    .attr("class", "x axis")
+	    .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
+	    .call(xAxis);
+
+	vis.append("svg:g")
+	    .attr("class", "y axis")
+	    .attr("transform", "translate(" + (MARGINS.left) + ",0)")
+	    .call(yAxis);
+
+	var lineGen = d3.svg.line()
+	    .x(function(d) {
+	        return xScale(d.year);
+	    })
+	    .y(function(d) {
+	        return yScale(d.sale);
+	    })
+	    //.interpolate("basis");
+	vis.append('svg:path')
+	    .attr('d', lineGen(data))
+	    .attr('stroke', 'green')
+	    .attr('stroke-width', 2)
+	    .attr('fill', 'none');
+
+	vis.append("text")
+	    .attr("x", WIDTH/2)
+	    .attr("y", HEIGHT)
+	    .style("fill", "black")
+	    .attr("class","legend")
+	    .text("hours slept");
+
+	vis.append("text")
+	    .attr("x", 0)
+	    .attr("y", HEIGHT/2)
+	    .style("fill", "black")
+	    .attr("class","legend")
+	    .text("# days");
 }

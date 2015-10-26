@@ -78,4 +78,18 @@ $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function(
     $app->put('emgdatapoint/{id}','EmgDatapointController@updateEmgDatapoint');
       
     $app->delete('emgdatapoint/{id}','EmgDatapointController@deleteEmgDatapoint');
+
+
+    //EmgDataPoint
+    $app->get('dashboardapplet','DashboardAppletController@index');
+  
+    $app->get('dashboardapplet/{id}','DashboardAppletController@getDashboardApplet');
+      
+    $app->post('dashboardapplet','DashboardAppletController@createDashboardApplet');
+      
+    $app->put('dashboardapplet/{id}','DashboardAppletController@updateDashboardApplet');
+      
+    $app->delete('dashboardapplet/{id}','DashboardAppletController@deleteDashboardApplet');
+
+    $app->get('dashboardappletbyloginid/{id}','DashboardAppletController@getDashboardAppletByLoginId');
 });

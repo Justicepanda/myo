@@ -8,10 +8,31 @@
         <h4 id="modalTitle" class="modal-title"></h4>
       </div>
       <div id="modalBody" class="modal-body">
-
+      	<svg id="visualization"></svg>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      	<div class="row">
+      		<div class="col-md-6">
+      			<ul class="list-inline">
+      				<li><h5 style="font-weight: bold;" id="startTimeLabel">Start Time: </h5></li>
+      				<li><h5 id="startTime"></h5></li>
+      			</ul>
+      		</div>
+      		<div class="col-md-6">
+      			<ul class="list-inline">
+      				<li class="pull-left"><h5 style="font-weight: bold;" id="endTimeLabel">End Time: </h5></li>
+      				<li class="pull-left"><h5 id="endTime"></h5></li>
+      			</ul>
+      		</div>
+      	</div>
+      	<div class="row">
+      		<div class="col-md-6">
+      			<ul class="list-inline">
+	      			<li><h5 style="font-weight: bold;" id="qualityLabel">Quality: </h5></li>
+	      			<li><h5 id="quality"></h5></li>
+	      		</ul>
+	      	</div>
+      	</div>
       </div>
     </div>
   </div>
@@ -22,8 +43,8 @@
 		<h2 class="col-md-6 title" style="color:#f9f9f9">Sessions</h2>
 		<div class="col-md 6">
 			<ul class="list-inline pull-right" style="margin-top:20px; margin-right:20px;">
-				<li><h4 id="sortLabel" class="hidden" style="color:#f9f9f9">Sort by: </h4></li>
-				<li>
+				<li style="height=40px;"><h4 id="sortLabel" class="hidden" style="color:#f9f9f9">Sort by: </h4></li>
+				<li style="height=40px;">
 					<div id="sortButtons" class="dropdown hidden" style="margin-right:20px;">
 					  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 					  	<div id="sortType">Date <span class="glyphicon glyphicon-chevron-down"></span></div>
@@ -35,7 +56,7 @@
 					  </ul>
 					</div>
 				</li>
-				<li>
+				<li style="height=40px;"> 
 					<div class="btn-group" role="group" aria-label="...">
 					  <button id="calendarViewBtn" type="button" class="btn btn-default"><span class="glyphicon glyphicon-th"></span></button>
 					  <button id="listViewBtn" type="button" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span></button>
@@ -68,10 +89,15 @@
 	</ul>
 </div>
 <div class="hidden" id="listView">
-	<h3>List View</h3>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<ul class="list-group list" id="sessionList">
+			</ul>
+		</div>
+	</div>
 </div>
 <div class="hidden" id="singleView">
-	<h3>SingleView</h3>
+	
 </div>
 
 <script src="../../../assets/js/views/sleepdata.js"></script>
