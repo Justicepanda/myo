@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRotationdatapointsTable extends Migration
+class CreateOrientationdatapointTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,14 @@ class CreateRotationdatapointsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rotationdatapoints', function (Blueprint $table) {
+        Schema::create('orientationdatapoint', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('rdpXRotation');
-            $table->float('rdpYRotation');
-            $table->float('rdpZRotation');
-            $table->dateTime('rdpDateTime');
+            $table->float('odpXRotation');
+            $table->float('odpYRotation');
+            $table->float('odpZRotation');
+            $table->dateTime('odpDateTime');
             $table->bigInteger('sessionID');
-            $table->bigInteger('rdpDeleted');
+            $table->bigInteger('odpDeleted');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateRotationdatapointsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('rotationdatapoints');
+        Schema::drop('orientationdatapoint');
     }
 }

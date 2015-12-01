@@ -42,6 +42,17 @@ $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function(
     $app->delete('session/{id}','SessionController@deleteSession');
 
     $app->get('sessionsbyloginid/{id}','SessionController@getSessionsByLoginID');
+    
+     //Session
+    $app->get('sessiontype','SessionTypeController@index');
+  
+    $app->get('sessiontype/{id}','SessionTypeController@getSessionType');
+      
+    $app->post('sessiontype','SessionTypeController@createSessionType');
+      
+    $app->put('sessiontype/{id}','SessionTypeController@updateSessionType');
+      
+    $app->delete('sessiontype/{id}','SessionTypeController@deleteSessionType');
 
 
     //RotationDataPoint
@@ -55,6 +66,8 @@ $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function(
       
     $app->delete('rotationdatapoint/{id}','RotationDatapointController@deleteRotationDatapoint');
 
+    $app->get('rotationdatapointsbysessionid/{id}', 'RotationDatapointController@getRotationDatapointsBySessionId');
+
 
     //AccelerationDataPoint
     $app->get('accelerationdatapoint','AccelerationDatapointController@index');
@@ -67,6 +80,7 @@ $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function(
       
     $app->delete('accelerationdatapoint/{id}','AccelerationDatapointController@deleteAccelerationDatapoint');
 
+    $app->get('accelerationdatapointsbysessionid/{id}', 'AccelerationDatapointController@getAccelerationDatapointsBySessionId');
 
     //EmgDataPoint
     $app->get('emgdatapoint','EmgDatapointController@index');
@@ -79,17 +93,55 @@ $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function(
       
     $app->delete('emgdatapoint/{id}','EmgDatapointController@deleteEmgDatapoint');
 
+    $app->get('emgdatapointsbysessionid/{id}', 'EmgDatapointController@getEmgDatapointsBySessionId');
 
-    //EmgDataPoint
-    $app->get('dashboardapplet','DashboardAppletController@index');
+      //EmgDataPoint
+    $app->get('orientationdatapoint','OrientationDatapointController@index');
   
-    $app->get('dashboardapplet/{id}','DashboardAppletController@getDashboardApplet');
+    $app->get('orientationdatapoint/{id}','OrientationDatapointController@getOrientationDatapoint');
       
-    $app->post('dashboardapplet','DashboardAppletController@createDashboardApplet');
+    $app->post('orientationdatapoint','OrientationDatapointController@createOrientationDatapoint');
       
-    $app->put('dashboardapplet/{id}','DashboardAppletController@updateDashboardApplet');
+    $app->put('orientationdatapoint/{id}','OrientationDatapointController@updateOrientationDatapoint');
       
-    $app->delete('dashboardapplet/{id}','DashboardAppletController@deleteDashboardApplet');
+    $app->delete('orientationdatapoint/{id}','OrientationDatapointController@deleteOrientationDatapoint');
 
-    $app->get('dashboardappletbyloginid/{id}','DashboardAppletController@getDashboardAppletByLoginId');
+    $app->get('orientationdatapointsbysessionid/{id}', 'OrientationDatapointController@getOrientationDatapointsBySessionId');
+
+    //DashboardGraph
+    $app->get('dashboardgraph','DashboardGraphController@index');
+  
+    $app->get('dashboardgraph/{id}','DashboardGraphController@getDashboardGraph');
+      
+    $app->post('dashboardgraph','DashboardGraphController@createDashboardGraph');
+      
+    $app->put('dashboardgraph/{id}','DashboardGraphController@updateDashboardGraph');
+      
+    $app->delete('dashboardgraph/{id}','DashboardGraphController@deleteDashboardGraph');
+
+    $app->get('dashboardgraphbyloginid/{id}','DashboardGraphController@getDashboardGraphByLoginId');
+    
+    //DashboardGraphType
+    $app->get('dashboardgraphtype','DashboardGraphTypeController@index');
+  
+    $app->get('dashboardgraphtype/{id}','DashboardGraphTypeController@getDashboardGraphType');
+      
+    $app->post('dashboardgraphtype','DashboardGraphTypeController@createDashboardGraphType');
+    
+    $app->put('dashboardgraphtype/{id}','DashboardGraphTypeController@updateDashboardGraphType');
+      
+    $app->delete('dashboardgraphtype/{id}','DashboardGraphTypeController@deleteDashboardGraphType');
+    
+    
+    $app->get('dashboardhelper/hourssleptperday/{id}','DashboardHelperController@HoursSleptPerDay');
+  
+    $app->get('dashboardhelper/hoursfitnessperday/{id}','DashboardHelperController@HoursFitnessPerDay');
+      
+    $app->get('dashboardhelper/fitnessvssleep/{id}','DashboardHelperController@FitnessVsSleep');
+    
+    $app->get('dashboardhelper/fitnessvsgoal/{id}','DashboardHelperController@FitnessVsGoal');
+      
+    $app->get('dashboardhelper/averagehourssleep/{id}','DashboardHelperController@AverageHoursSleep');
+    
+    $app->get('dashboardhelper/averagehoursfitness/{id}','DashboardHelperController@AverageHoursFitness');
 });

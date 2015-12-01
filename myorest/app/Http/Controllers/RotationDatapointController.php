@@ -2,7 +2,7 @@
   
 namespace App\Http\Controllers;
   
-use App\RotationDatapoint;
+use App\RotationDataPoint;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
   
@@ -38,6 +38,12 @@ class RotationDatapointController extends Controller
         $RotationDatapoint->save();
  
         return response()->json('deleted');
+    }
+
+    public function getRotationDatapointsBySessionId($id)
+    {
+        $RotationDatapoints = RotationDataPoint::where('sessionID', $id)->where('rdpDeleted', 0)->whereRaw('id % 10 = 0')->get();
+        return response()->json($RotationDatapoints);
     }
   
     public function updateRotationDatapoint(Request $request, $id)

@@ -1,4 +1,4 @@
-var url = "http://localhost:8000/api/login/" + getCookie('loginId');
+var url = "http://drewswinney.com:8080/api/login/" + getCookie('loginId');
 
 $.get(url, function(data, status)
 {

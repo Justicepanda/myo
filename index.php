@@ -53,7 +53,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li id="dashboardTab" class="active"><a href="#/dashboard">Dashboard</a></li>
-            <li id="sleepdataTab"><a href="#/sleepdata">Sleep Data</a></li>      
+            <li id="sleepdataTab"><a href="#/sleepdata">Session Data</a></li>      
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">

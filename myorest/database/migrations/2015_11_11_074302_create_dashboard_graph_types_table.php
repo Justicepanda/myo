@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSessionsTable extends Migration
+class CreateDashboardGraphTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,10 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('create=dashboard_graph_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->datetime('sessionStartTime');
-            $table->datetime('sessionEndTime');
-            $table->bigInteger('loginID');
-            $table->bigInteger('sessionQuality');
-            $table->bigInteger('sessionDeleted');
+            $table->string('dgtName');
+            $table->bigInteger('dgtDeleted');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateSessionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sessions');
+        Schema::drop('create=dashboard_graph_types');
     }
 }

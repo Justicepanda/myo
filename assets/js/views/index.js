@@ -48,7 +48,7 @@ var delete_cookie = function(name) {
 
 $('#loginSubmitBtn').click(function()
 {
-	var url = "http://localhost:8000/api/loginauth"
+	var url = "http://drewswinney.com:8080/api/loginauth"
 	var data =
 	{
 	    "username": $('#userText').val(),
@@ -74,7 +74,7 @@ $('#loginSubmitBtn').click(function()
 });
 
 $('#userText').bind("enterKey",function(e){
-   var url = "http://localhost:8000/api/loginauth"
+   var url = "http://drewswinney.com:8080/api/loginauth"
 	var data =
 	{
 	    "username": $('#userText').val(),
@@ -107,7 +107,7 @@ $('#userText').keyup(function(e){
 });
 
 $('#passText').bind("enterKey",function(e){
-   var url = "http://localhost:8000/api/loginauth"
+   var url = "http://drewswinney.com:8080/api/loginauth"
 	var data =
 	{
 	    "username": $('#userText').val(),

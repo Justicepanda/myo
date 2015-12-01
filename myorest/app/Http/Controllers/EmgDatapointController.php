@@ -2,7 +2,8 @@
   
 namespace App\Http\Controllers;
   
-use App\EmgDatapoint;
+use Log;
+use App\EmgDataPoint;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
   
@@ -38,6 +39,13 @@ class EmgDatapointController extends Controller
         $EmgDatapoint->save();
  
         return response()->json('deleted');
+    }
+
+    public function getEmgDatapointsBySessionId($id)
+    {
+        //DB::raw();
+        $EmgDataPoints = EmgDataPoint::where('sessionID', $id)->where('emgpDeleted', 0)->whereRaw('id % 10 = 0')->get();
+        return response()->json($EmgDataPoints);
     }
   
     public function updateEmgDatapoint(Request $request, $id)

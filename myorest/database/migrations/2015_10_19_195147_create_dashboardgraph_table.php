@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDashboardappletTable extends Migration
+class CreateDashboardGraphTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreateDashboardappletTable extends Migration
      */
     public function up()
     {
-        Schema::create('dashboardapplet', function (Blueprint $table) {
-            $table->increments('daID');
-            $table->bigInteger('graphID');
-            $table->string('daSize');
-            $table->string('daRow');
+        Schema::create('dashboardgraph', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('dgSize');
+            $table->string('dgRow');
+            $table->bigInteger('dgtID');
             $table->bigInteger('loginID');
-            $table->bigInteger('daDeleted');
+            $table->bigInteger('dgDeleted');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateDashboardappletTable extends Migration
      */
     public function down()
     {
-        Schema::drop('dashboardapplet');
+        Schema::drop('dashboardgraph');
     }
 }

@@ -56,6 +56,7 @@ class SessionController extends Controller
         $Session->sessionEndTime = $request->input('sessionEndTime');
         $Session->loginID = $request->input('loginID');
         $Session->sessionQuality = $request->input('sessionQuality');
+        $Session->sessionTypeID = $request->input('sessionTypeID');
         $Session->sessionDeleted = 0;
         $Session->save();
   

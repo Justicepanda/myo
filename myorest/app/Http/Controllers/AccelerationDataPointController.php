@@ -2,7 +2,7 @@
   
 namespace App\Http\Controllers;
   
-use App\AccelerationDatapoint;
+use App\AccelerationDataPoint;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
   
@@ -12,37 +12,43 @@ class AccelerationDatapointController extends Controller
 {
 	public function index()
 	{
-        $AccelerationDatapoints  = AccelerationDatapoint::all();
+        $AccelerationDatapoints  = AccelerationDataPoint::all();
   
         return response()->json($AccelerationDatapoints);
     }
   
     public function getAccelerationDatapoint($id)
     {
-        $AccelerationDatapoint  = AccelerationDatapoint::find($id);
+        $AccelerationDatapoint  = AccelerationDataPoint::find($id);
   
         return response()->json($AccelerationDatapoint);
     }
   
     public function createAccelerationDatapoint(Request $request)
     {
-        $AccelerationDatapoint = AccelerationDatapoint::create($request->all());
+        $AccelerationDatapoint = AccelerationDataPoint::create($request->all());
   
         return response()->json($AccelerationDatapoint);
     }
   
     public function deleteAccelerationDatapoint($id)
     {
-        $AccelerationDatapoint  = AccelerationDatapoint::find($id);
+        $AccelerationDatapoint  = AccelerationDataPoint::find($id);
         $AccelerationDatapoint->dpDeleted = 1;
         $AccelerationDatapoint->save();
  
         return response()->json('deleted');
     }
+
+    public function getAccelerationDatapointsBySessionId($id)
+    {
+        $AccelerationDatapoints = AccelerationDataPoint::where('sessionID', $id)->where('adpDeleted', 0)->whereRaw('id % 10 = 0')->get();
+        return response()->json($AccelerationDatapoints);
+    }
   
     public function updateAccelerationDatapoint(Request $request, $id)
     {
-        $AccelerationDatapoint  = AccelerationDatapoint::find($id);
+        $AccelerationDatapoint  = AccelerationDataPoint::find($id);
         $AccelerationDatapoint->adpXAcceleration = $request->input('adpXAcceleration');
         $AccelerationDatapoint->adpYAcceleration = $request->input('adpYAcceleration');
         $AccelerationDatapoint->adpZAcceleration = $request->input('adpZAcceleration');
